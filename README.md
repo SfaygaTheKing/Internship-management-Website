@@ -1,4 +1,4 @@
-# School-Internship-Web
+# School-Internship-Website
 
 This repository contains the source code for an Internship Management System designed for schools. The goal of this project is to provide a user-friendly and efficient platform for managing student internships.
 
