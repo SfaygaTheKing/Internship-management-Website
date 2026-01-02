@@ -1,0 +1,235 @@
+<div class="max-height">
+  <p-card header="AJOUTER DURÉE DE STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTypeStage ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="typeStage"
+                inputId="typeStage"
+                [options]="typesStage"
+                optionLabel="type"
+                [filter]="true"
+                filterBy="type"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateTypeStage ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedDureeStage.typeStage"
+              >
+              </p-dropdown>
+              <label for="typeStage">Type de stage</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showTypeStageDialog()"
+            ></button>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAnnee ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="annee"
+                inputId="annee"
+                [options]="annees"
+                optionLabel="annee"
+                [filter]="true"
+                filterBy="annee"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateAnnee ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedDureeStage.annee"
+              >
+              </p-dropdown>
+              <label for="annee">Année de stage</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showAnneeDialog()"
+            ></button>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateDebut ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-calendar
+                inputId="debut"
+                [readonlyInput]="true"
+                dateFormat="dd/mm/yy"
+                [ngClass]="validateDebut ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedDureeStage.debut"
+              ></p-calendar>
+              <label for="debut">Date de début</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateFin ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-calendar
+                inputId="fin"
+                [readonlyInput]="true"
+                dateFormat="dd/mm/yy"
+                [ngClass]="validateFin ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedDureeStage.fin"
+              ></p-calendar>
+              <label for="fin">Date de fin</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="save()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+
+<p-dialog
+  [visible]="anneeDialog"
+  styleClass="p-fluid"
+  header="Ajouter année de stage"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateAnneeAnnee ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="anneeAnnee"
+            [useGrouping]="false"
+            [min]="1950"
+            [max]="4000"
+            [ngClass]="validateAnneeAnnee ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedAnnee.annee"
+          >
+          </p-inputNumber>
+          <label for="anneeAnnee">Année</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showAnneeDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveAnnee()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog
+  [visible]="typeStageDialog"
+  styleClass="p-fluid"
+  header="Ajouter type de stage"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageType ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label"
+          ><input
+            id="typeStageType"
+            pInputText
+            [ngClass]="validateTypeStageType ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.type"
+          /><label for="typeStageType">Type</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageNbSemaines ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="typeStageNbSemaines"
+            [useGrouping]="false"
+            [min]="1"
+            [max]="25"
+            [ngClass]="validateTypeStageNbSemaines ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.nbSemaines"
+          >
+          </p-inputNumber>
+          <label for="typeStageNbSemaines">Nombre de semaines</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showTypeStageDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveTypeStage()"
+    ></p-button>
+  </ng-template>
+</p-dialog>

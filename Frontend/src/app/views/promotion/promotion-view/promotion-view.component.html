@@ -1,0 +1,96 @@
+<div class="max-height">
+  <p-card header="CONSULTER PROMOTION">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="annee"
+                [useGrouping]="false"
+                [min]="1950"
+                [max]="4000"
+                [readonly]="true"
+                [(ngModel)]="selectedPromotion.annee"
+              >
+              </p-inputNumber>
+              <label for="annee">Année</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="nbInscrits"
+                [useGrouping]="false"
+                [min]="1"
+                [max]="1000"
+                [readonly]="true"
+                [(ngModel)]="selectedPromotion.nbInscrits"
+              >
+              </p-inputNumber>
+              <label for="nbInscrits">Nombre d'inscrits</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="nbRecus"
+                [useGrouping]="false"
+                [min]="1"
+                [max]="1000"
+                [readonly]="true"
+                [(ngModel)]="selectedPromotion.nbRecus"
+              >
+              </p-inputNumber>
+              <label for="nbRecus">Nombre de reçus</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="idEtudiant"
+                pInputText
+                readonly="readonly"
+                [value]="selectedPromotion.idEtudiant - 1"
+              /><label for="idEtudiant">Nombre d'étudiants</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="professeur"
+                pInputText
+                readonly="readonly"
+                [value]="
+                  selectedPromotion.professeur.nom +
+                  ' ' +
+                  selectedPromotion.professeur.prenom
+                "
+              /><label for="professeur">Professeur</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

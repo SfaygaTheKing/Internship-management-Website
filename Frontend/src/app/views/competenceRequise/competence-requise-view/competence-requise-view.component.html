@@ -1,0 +1,57 @@
+<div class="max-height">
+  <p-card header="CONSULTER COMPÉTENCE À ACQUÉRIR">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="competence"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedCompetenceRequise.competence.code"
+              /><label for="competence">Compétence enseignée</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="typeStage"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedCompetenceRequise.typeStage.type"
+              /><label for="typeStage">Type de stage</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="niveau"
+                [useGrouping]="false"
+                [min]="1"
+                [max]="3"
+                [readonly]="true"
+                [(ngModel)]="selectedCompetenceRequise.niveau"
+              >
+              </p-inputNumber>
+              <label for="niveau">Niveau exigé</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

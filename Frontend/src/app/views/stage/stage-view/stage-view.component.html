@@ -1,0 +1,136 @@
+<div class="max-height">
+  <p-card header="CONSULTER STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="numero"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedStage.numero"
+              /><label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="etudiant"
+                pInputText
+                readonly="readonly"
+                [value]="
+                  selectedStage.etudiant.nom +
+                  ' ' +
+                  selectedStage.etudiant.prenom
+                "
+              />
+              <label for="etudiant">Étudiant</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="typeStage"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedStage.typeStage.type"
+              />
+              <label for="typeStage">Type de stage</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="annee"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedStage.annee.annee"
+              />
+              <label for="annee">Année de stage</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="entreprise"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedStage.entreprise.raisonSociale"
+              />
+              <label for="entreprise">Entreprise</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="professeur"
+                pInputText
+                readonly="readonly"
+                [value]="
+                  selectedStage.professeur.nom +
+                  ' ' +
+                  selectedStage.professeur.prenom
+                "
+              />
+              <label for="professeur">Professeur</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="tuteur"
+                pInputText
+                readonly="readonly"
+                [value]="
+                  selectedStage.tuteur.nom + ' ' + selectedStage.tuteur.prenom
+                "
+              />
+              <label for="tuteur">Tuteur</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <textarea
+                id="compteRendu"
+                rows="3"
+                cols="30"
+                pInputTextarea
+                readonly="readonly"
+                [(ngModel)]="selectedStage.compteRendu"
+              ></textarea
+              ><label for="compteRendu">Compte rendu</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

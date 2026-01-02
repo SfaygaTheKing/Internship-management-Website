@@ -1,0 +1,56 @@
+<div class="max-height">
+  <p-card header="CONSULTER COMPÉTENCE ENSEIGNÉE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="code"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedCompetence.code"
+              /><label for="code">Code</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="code"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedCompetence.libelle"
+              /><label for="code">Libelle</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <textarea
+                id="description"
+                rows="3"
+                cols="30"
+                pInputTextarea
+                readonly="readonly"
+                [(ngModel)]="selectedCompetence.description"
+              ></textarea
+              ><label for="description">Description</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

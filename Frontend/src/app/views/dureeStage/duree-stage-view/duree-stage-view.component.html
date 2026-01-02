@@ -1,0 +1,70 @@
+<div class="max-height">
+  <p-card header="CONSULTER DURÉE DE STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="typeStage"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedDureeStage.typeStage.type"
+              /><label for="typeStage">Type de stage</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="annee"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedDureeStage.annee.annee"
+              /><label for="annee">Année de stage</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="debut"
+                pInputText
+                readonly="readonly"
+                [ngModel]="getDate(selectedDureeStage.debut)"
+              /><label for="debut">Date de début</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="fin"
+                pInputText
+                readonly="readonly"
+                [ngModel]="getDate(selectedDureeStage.fin)"
+              /><label for="fin">Date de fin</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

@@ -1,0 +1,35 @@
+<div class="max-height">
+  <p-card header="CONSULTER ANNÉE DE STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="nbRecus"
+                [useGrouping]="false"
+                [min]="1950"
+                [max]="4000"
+                [readonly]="true"
+                [(ngModel)]="selectedAnnee.annee"
+              >
+              </p-inputNumber>
+              <label for="nbRecus">Année</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

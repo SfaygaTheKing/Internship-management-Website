@@ -1,0 +1,206 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR ENTREPRISE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNumero ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="numero"
+                [useGrouping]="false"
+                [min]="00000000000000"
+                [max]="99999999999999"
+                [ngClass]="validateNumero ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.numero"
+              >
+              </p-inputNumber>
+              <label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateFormeJuridique ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="formeJuridique"
+                [options]="formes"
+                optionLabel="forme"
+                optionValue="forme"
+                [ngClass]="validateFormeJuridique ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.formeJuridique"
+              >
+              </p-dropdown>
+              <label for="formeJuridique">Forme juridique</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateRaisonSociale ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="raisonSociale"
+                pInputText
+                [ngClass]="validateRaisonSociale ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.raisonSociale"
+              /><label for="raisonSociale">Raison sociale</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAdresse ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="adresse"
+                pInputText
+                [ngClass]="validateAdresse ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.adresse"
+              /><label for="adresse">Adresse</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateVille ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="ville"
+                pInputText
+                [ngClass]="validateVille ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.ville"
+              /><label for="ville">Ville</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateCodePostal ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="codePostal"
+                pInputText
+                type="number"
+                [ngClass]="validateCodePostal ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.codePostal"
+              />
+              <label for="codePostal">Code postal</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelephone ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="telephone"
+                pInputText
+                type="number"
+                [ngClass]="validateTelephone ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.telephone"
+              />
+              <label for="telephone">Téléphone</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateFax ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="fax"
+                pInputText
+                type="number"
+                [ngClass]="validateFax ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.fax"
+              />
+              <label for="fax">Fax</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateContact ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="contact"
+                pInputText
+                [ngClass]="validateContact ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.contact"
+              /><label for="contact">Contact</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelContact ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="telContact"
+                pInputText
+                type="number"
+                [ngClass]="validateTelContact ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEntreprise.telContact"
+              />
+              <label for="telContact">Téléphone contact</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

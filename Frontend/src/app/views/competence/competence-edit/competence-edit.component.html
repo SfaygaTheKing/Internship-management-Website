@@ -1,0 +1,74 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR COMPÉTENCE ENSEIGNÉE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateCode ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="code"
+                pInputText
+                [ngClass]="validateCode ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetence.code"
+              /><label for="code">Code</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateLibelle ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="code"
+                pInputText
+                [ngClass]="validateLibelle ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetence.libelle"
+              /><label for="code">Libelle</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateDescription ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <textarea
+                id="description"
+                rows="3"
+                cols="30"
+                pInputTextarea
+                [ngClass]="validateDescription ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetence.description"
+              ></textarea
+              ><label for="description">Description</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

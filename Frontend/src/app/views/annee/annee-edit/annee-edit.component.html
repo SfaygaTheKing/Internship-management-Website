@@ -1,0 +1,45 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR ANNÉE DE STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAnnee ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="nbRecus"
+                [useGrouping]="false"
+                [min]="1950"
+                [max]="4000"
+                [ngClass]="validateAnnee ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedAnnee.annee"
+              >
+              </p-inputNumber>
+              <label for="nbRecus">Année</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

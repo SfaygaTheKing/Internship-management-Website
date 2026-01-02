@@ -1,0 +1,52 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR PROFILE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateEmail ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="email"
+                pInputText
+                [ngClass]="validateEmail ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="getUser().email"
+              /><label for="email">Email</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="password"
+                pInputText
+                [(ngModel)]="displayedPassword"
+              /><label for="password">Mot de passe</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

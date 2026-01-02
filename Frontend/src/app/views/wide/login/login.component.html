@@ -1,0 +1,75 @@
+<section class="whole-page">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 offset-md-3 d-flex justify-content-center align-items-center"
+      >
+        <div class="card d-flex align-items-center">
+          <p-card [style]="{ width: '400px' }">
+            <ng-template pTemplate="header">
+              <div class="text-center pt-5">
+                <span class="custom-span">ECM</span>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="content">
+              <div>
+                <h5>Remplissez vos identifiants</h5>
+                <p-inputGroup class="mb-4">
+                  <p-inputGroupAddon>
+                    <i class="pi pi-user"></i>
+                  </p-inputGroupAddon>
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      class="ps-2"
+                      [(ngModel)]="loginRequest.email"
+                      [ngClass]="validateEmail ? '' : 'invalid-border'"
+                    /><label
+                      for="nom"
+                      [ngClass]="validateEmail ? '' : 'invalid-text'"
+                      >Email</label
+                    >
+                  </span>
+                </p-inputGroup>
+                <div class="card flex justify-content-center mb-3">
+                  <span class="p-float-label">
+                    <p-password
+                      [inputStyle]="{ width: '100%' }"
+                      [style]="{ width: '100%' }"
+                      [toggleMask]="true"
+                      [feedback]="false"
+                      [(ngModel)]="loginRequest.password"
+                      [ngClass]="
+                        validatePassword ? '' : 'invalid-password-border'
+                      "
+                    ></p-password>
+                    <label
+                      for="password"
+                      [ngClass]="validatePassword ? '' : 'invalid-text'"
+                      >Mot de passe</label
+                    >
+                  </span>
+                </div>
+
+                <div class="d-flex flex-column">
+                  <p-button
+                    [style]="{ width: '100%' }"
+                    label="Login"
+                    severity="danger"
+                    (onClick)="login()"
+                  ></p-button>
+                  <h5
+                    *ngIf="!validateCredentials"
+                    class="invalid-text text-center mb-0"
+                  >
+                    Mauvaises informations d'identification
+                  </h5>
+                </div>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+.header {
+  background-color: #ef4444;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+  height: 9vh !important;
+}
+
+.custom-button {
+  color: white;
+}
+
+span {
+  margin-left: 35px;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+button {
+  color: white;
+  background: none;
+  border: 2px solid white;
+}

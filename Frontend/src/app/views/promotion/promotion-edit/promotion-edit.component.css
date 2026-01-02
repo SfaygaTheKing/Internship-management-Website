@@ -1,0 +1,40 @@
+.max-height,
+:host ::ng-deep .p-card,
+:host ::ng-deep .p-card-body {
+  height: 100%;
+}
+
+:host ::ng-deep .p-card-content {
+  height: 82%;
+}
+
+.form-container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 3px solid #4b5563;
+  border-radius: 0.3rem;
+}
+
+.custom-margin-top {
+  margin-top: 47px;
+}
+
+.distance {
+  width: 40vh !important;
+}
+
+:host ::ng-deep span.p-inputnumber input {
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+:host ::ng-deep div.p-dropdown {
+  border-radius: 0rem;
+  width: 32vh;
+}
+
+:host ::ng-deep input.p-dropdown-filter {
+  width: 100%;
+}

@@ -1,0 +1,130 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR TUTEUR">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNumero ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="numero"
+                pInputText
+                [ngClass]="validateNumero ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.numero"
+              /><label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                [ngClass]="validateNom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.nom"
+              /><label for="nom">Nom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validatePrenom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="prenom"
+                pInputText
+                [ngClass]="validatePrenom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.prenom"
+              /><label for="prenom">Prénom</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateQualite ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="qualite"
+                inputId="qualite"
+                [options]="qualites"
+                optionLabel="qualite"
+                optionValue="qualite"
+                [ngClass]="validateQualite ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.qualite"
+              >
+              </p-dropdown>
+              <label for="qualite">Qualité</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelephone ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="telephone"
+                pInputText
+                type="number"
+                [ngClass]="validateTelephone ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.telephone"
+              /><label for="telephone">Téléphone</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateEntreprise ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="entreprise"
+                inputId="entreprise"
+                [options]="entreprises"
+                optionLabel="raisonSociale"
+                [ngClass]="validateEntreprise ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedTuteur.entreprise"
+              >
+              </p-dropdown>
+              <label for="entreprise">Entreprise</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

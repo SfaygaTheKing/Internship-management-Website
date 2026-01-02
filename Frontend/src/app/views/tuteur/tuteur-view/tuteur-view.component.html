@@ -1,0 +1,93 @@
+<div class="max-height">
+  <p-card header="CONSULTER TUTEUR">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="numero"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.numero"
+              /><label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.nom"
+              /><label for="nom">Nom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="prenom"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.prenom"
+              /><label for="prenom">Prénom</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="qualite"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.qualite"
+              />
+              <label for="qualite">Qualité</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="telephone"
+                pInputText
+                type="number"
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.telephone"
+              /><label for="telephone">Téléphone</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="entreprise"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTuteur.entreprise.raisonSociale"
+              />
+              <label for="entreprise">Entreprise</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

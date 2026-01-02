@@ -1,0 +1,244 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR PROFESSEUR">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNumero ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="numero"
+                pInputText
+                [ngClass]="validateNumero ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.numero"
+              />
+              <label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                [ngClass]="validateNom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.nom"
+              /><label for="nom">Nom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validatePrenom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="prenom"
+                pInputText
+                [ngClass]="validatePrenom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.prenom"
+              /><label for="prenom">Prénom</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-end custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateQualite ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="qualite"
+                [options]="qualites"
+                optionLabel="qualite"
+                optionValue="qualite"
+                [ngClass]="validateQualite ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.qualite"
+              >
+              </p-dropdown>
+              <label for="qualite">Qualité</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateDateEmbauche ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-calendar
+                id="dateEmbauche"
+                inputId="dateEmbauche"
+                [readonlyInput]="true"
+                dateFormat="dd/mm/yy"
+                [ngClass]="validateDateEmbauche ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="dateEmbauche"
+              ></p-calendar>
+              <label for="dateEmbauche">Date d'embauche</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <span class="p-float-label">
+              <p-calendar
+                inputId="dateDepart"
+                [readonlyInput]="true"
+                dateFormat="dd/mm/yy"
+                [(ngModel)]="dateDepart"
+              ></p-calendar>
+              <label for="dateDepart">Date de départ</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAdresse ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="adresse"
+                pInputText
+                [ngClass]="validateAdresse ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.adresse"
+              /><label for="adresse">Adresse</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateVille ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="ville"
+                pInputText
+                [ngClass]="validateVille ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.ville"
+              /><label for="ville">Ville</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateCodePostale ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="codePostale"
+                pInputText
+                type="number"
+                [ngClass]="validateCodePostale ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.codePostale"
+              />
+              <label for="codePostale">Code postal</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelEcole ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="telEcole"
+                pInputText
+                type="number"
+                [ngClass]="validateTelEcole ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.telEcole"
+              />
+              <label for="telEcole">Téléphone école</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelDomicile ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="telDomicile"
+                pInputText
+                type="number"
+                [ngClass]="validateTelDomicile ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.telDomicile"
+              />
+              <label for="telDomicile">Téléphone domicile</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateEmail ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="email"
+                pInputText
+                [ngClass]="validateEmail ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedProfesseur.email"
+              /><label for="email">Email</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="password"
+                pInputText
+                [(ngModel)]="displayedPassword"
+              /><label for="password">Mot de passe</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

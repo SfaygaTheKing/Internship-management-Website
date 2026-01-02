@@ -1,0 +1,354 @@
+<div class="max-height">
+  <p-card header="AJOUTER STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateEtudiant ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="etudiant"
+                inputId="etudiant"
+                [options]="etudiants"
+                [filter]="true"
+                [filterFields]="['nom', 'prenom']"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateEtudiant ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.etudiant"
+              >
+                <ng-template pTemplate="selectedItem">
+                  <div
+                    *ngIf="selectedStage.etudiant !== undefined"
+                    class="item"
+                  >
+                    <div>
+                      {{ selectedStage.etudiant.nom }}
+                      {{ selectedStage.etudiant.prenom }}
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template let-etudiant pTemplate="item">
+                  <div class="item">
+                    <div>{{ etudiant.nom }} {{ etudiant.prenom }}</div>
+                  </div>
+                </ng-template></p-dropdown
+              >
+              <label for="etudiant">Étudiant</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTypeStage ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="typeStage"
+                inputId="typeStage"
+                [options]="typesStage"
+                optionLabel="type"
+                [filter]="true"
+                filterBy="type"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateTypeStage ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.typeStage"
+              >
+              </p-dropdown>
+              <label for="typeStage">Type de stage</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showTypeStageDialog()"
+            ></button>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAnnee ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="annee"
+                inputId="annee"
+                [options]="annees"
+                optionLabel="annee"
+                [filter]="true"
+                filterBy="annee"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateAnnee ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.annee"
+              >
+              </p-dropdown>
+              <label for="annee">Année de stage</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showAnneeDialog()"
+            ></button>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateEntreprise ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="entreprise"
+                inputId="entreprise"
+                [options]="entreprises"
+                optionLabel="raisonSociale"
+                [filter]="true"
+                filterBy="raisonSociale"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateEntreprise ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.entreprise"
+              >
+              </p-dropdown>
+              <label for="entreprise">Entreprise</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateProfesseur ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="professeur"
+                inputId="professeur"
+                [options]="professeurs"
+                [filter]="true"
+                [filterFields]="['nom', 'prenom']"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateProfesseur ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.professeur"
+              >
+                <ng-template pTemplate="selectedItem">
+                  <div
+                    *ngIf="selectedStage.professeur !== undefined"
+                    class="item"
+                  >
+                    <div>
+                      {{ selectedStage.professeur.nom }}
+                      {{ selectedStage.professeur.prenom }}
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template let-professeur pTemplate="item">
+                  <div class="item">
+                    <div>{{ professeur.nom }} {{ professeur.prenom }}</div>
+                  </div>
+                </ng-template></p-dropdown
+              >
+              <label for="professeur">Professeur</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTuteur ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="tuteur"
+                inputId="tuteur"
+                [options]="tuteurs"
+                [filter]="true"
+                [filterFields]="['nom', 'prenom']"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateTuteur ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.tuteur"
+              >
+                <ng-template pTemplate="selectedItem">
+                  <div *ngIf="selectedStage.tuteur !== undefined" class="item">
+                    <div>
+                      {{ selectedStage.tuteur.nom }}
+                      {{ selectedStage.tuteur.prenom }}
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template let-tuteur pTemplate="item">
+                  <div class="item">
+                    <div>{{ tuteur.nom }} {{ tuteur.prenom }}</div>
+                  </div>
+                </ng-template></p-dropdown
+              >
+              <label for="tuteur">Tuteur</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateCompteRendu ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <textarea
+                id="compteRendu"
+                rows="3"
+                cols="30"
+                pInputTextarea
+                [ngClass]="validateCompteRendu ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedStage.compteRendu"
+              ></textarea
+              ><label for="compteRendu">Compte rendu</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="save()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+
+<p-dialog
+  [visible]="typeStageDialog"
+  styleClass="p-fluid"
+  header="Ajouter type de stage"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageType ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label"
+          ><input
+            id="typeStageType"
+            pInputText
+            [ngClass]="validateTypeStageType ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.type"
+          /><label for="typeStageType">Type</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageNbSemaines ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="typeStageNbSemaines"
+            [useGrouping]="false"
+            [min]="1"
+            [max]="25"
+            [ngClass]="validateTypeStageNbSemaines ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.nbSemaines"
+          >
+          </p-inputNumber>
+          <label for="typeStageNbSemaines">Nombre de semaines</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showTypeStageDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveTypeStage()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog
+  [visible]="anneeDialog"
+  styleClass="p-fluid"
+  header="Ajouter année de stage"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateAnneeAnnee ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="anneeAnnee"
+            [useGrouping]="false"
+            [min]="1950"
+            [max]="4000"
+            [ngClass]="validateAnneeAnnee ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedAnnee.annee"
+          >
+          </p-inputNumber>
+          <label for="anneeAnnee">Année</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showAnneeDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveAnnee()"
+    ></p-button>
+  </ng-template>
+</p-dialog>

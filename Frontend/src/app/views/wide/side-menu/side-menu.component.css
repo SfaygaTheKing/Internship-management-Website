@@ -1,0 +1,27 @@
+.white-text {
+  color: white;
+}
+
+.max-height {
+  height: 91vh !important;
+}
+
+:host ::ng-deep .p-panelmenu-header-content {
+  border: 1px solid white;
+  background-color: #6f3a3a;
+}
+
+:host ::ng-deep .p-panelmenu-header-action {
+  color: white;
+}
+
+.profile {
+  border: 1px solid #ef4444;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ef4444;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}

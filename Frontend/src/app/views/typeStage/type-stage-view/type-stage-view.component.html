@@ -1,0 +1,47 @@
+<div class="max-height">
+  <p-card header="CONSULTER TYPE DE STAGE">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedTypeStage.type"
+              /><label for="nom">Type</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="nbRecus"
+                [useGrouping]="false"
+                [min]="1"
+                [max]="25"
+                [readonly]="true"
+                [(ngModel)]="selectedTypeStage.nbSemaines"
+              >
+              </p-inputNumber>
+              <label for="nbRecus">Nombre de semaines</label>
+            </span>
+          </p-inputGroup>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

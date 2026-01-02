@@ -1,0 +1,348 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR ÉTUDIANT">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                [ngClass]="validateNom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.nom"
+              /><label for="nom">Nom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validatePrenom ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="prenom"
+                pInputText
+                [ngClass]="validatePrenom ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.prenom"
+              /><label for="prenom">Prénom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateDateNaissance ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-calendar
+                inputId="dateNaissance"
+                [readonlyInput]="true"
+                dateFormat="dd/mm/yy"
+                [ngClass]="validateDateNaissance ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="dateNaissance"
+              ></p-calendar>
+              <label for="dateNaissance">Date de naissance</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div class="d-flex justify-content-between align-items-end mt-4">
+          <div class="d-flex flex-column distance">
+            <span class="mb-1">Sexe</span>
+            <p-inputGroup>
+              <button
+                pButton
+                icon="pi pi-exclamation-circle"
+                [ngClass]="validateSexe ? '' : 'p-button-danger'"
+              ></button>
+              <p-selectButton
+                [options]="sexes"
+                optionLabel="sexe"
+                optionValue="sexe"
+                [allowEmpty]="false"
+                [ngClass]="validateSexe ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.sexe"
+              ></p-selectButton>
+            </p-inputGroup>
+          </div>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateQualite ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="qualite"
+                [options]="qualites"
+                optionLabel="qualite"
+                optionValue="qualite"
+                [ngClass]="validateQualite ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.qualite"
+              >
+              </p-dropdown>
+              <label for="qualite">Qualité</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTelephone ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="telephone"
+                pInputText
+                type="number"
+                [ngClass]="validateTelephone ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.telephone"
+              />
+              <label for="telephone">Téléphone</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateAdresse ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="adresse"
+                pInputText
+                [ngClass]="validateAdresse ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.adresse"
+              /><label for="adresse">Adresse</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateVille ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label"
+              ><input
+                id="ville"
+                pInputText
+                [ngClass]="validateVille ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.ville"
+              /><label for="ville">Ville</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateCodePostale ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <input
+                id="codePostale"
+                pInputText
+                type="number"
+                [ngClass]="validateCodePostale ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.codePostale"
+              />
+              <label for="codePostale">Code postal</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance"
+            >>
+            <span class="p-float-label"
+              ><input
+                id="mention"
+                pInputText
+                [(ngModel)]="selectedEtudiant.mention"
+              /><label for="mention">Mention</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validatePromotion ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="promotion"
+                inputId="promotion"
+                [options]="promotions"
+                optionLabel="annee"
+                [filter]="true"
+                filterBy="annee"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validatePromotion ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedEtudiant.promotion"
+              >
+              </p-dropdown>
+              <label for="promotion">Promotion</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showPromotionDialog()"
+            ></button>
+          </p-inputGroup>
+          <div class="distance"></div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+<p-dialog
+  [visible]="promotionDialog"
+  styleClass="p-fluid"
+  header="Ajouter promotion"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validatePromotionAnnee ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="annee"
+            [useGrouping]="false"
+            [min]="1950"
+            [max]="4000"
+            [ngClass]="validatePromotionAnnee ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedPromotion.annee"
+          >
+          </p-inputNumber>
+          <label for="annee">Année</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validatePromotionNbInscrits ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="nbInscrits"
+            [useGrouping]="false"
+            [min]="1"
+            [max]="1000"
+            [ngClass]="validatePromotionNbInscrits ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedPromotion.nbInscrits"
+          >
+          </p-inputNumber>
+          <label for="nbInscrits">Nombre d'inscrits</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validatePromotionNbRecus ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="nbRecus"
+            [useGrouping]="false"
+            [min]="1"
+            [max]="1000"
+            [ngClass]="validatePromotionNbRecus ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedPromotion.nbRecus"
+          >
+          </p-inputNumber>
+          <label for="nbRecus">Nombre de reçus</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validatePromotionProfesseur ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-dropdown
+            id="professeur"
+            inputId="professeur"
+            [options]="professeurs"
+            [filter]="true"
+            [filterFields]="['nom', 'prenom']"
+            appendTo="body"
+            emptyFilterMessage="Aucun résultat trouvé"
+            [ngClass]="validatePromotionProfesseur ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedPromotion.professeur"
+          >
+            <ng-template pTemplate="selectedItem">
+              <div
+                *ngIf="selectedPromotion.professeur !== undefined"
+                class="item"
+              >
+                <div>
+                  {{ selectedPromotion.professeur.nom }}
+                  {{ selectedPromotion.professeur.prenom }}
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template let-professeur pTemplate="item">
+              <div class="item">
+                <div>{{ professeur.nom }} {{ professeur.prenom }}</div>
+              </div>
+            </ng-template></p-dropdown
+          >
+          <label for="professeur">Professeur</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showPromotionDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="savePromotion()"
+    ></p-button>
+  </ng-template>
+</p-dialog>

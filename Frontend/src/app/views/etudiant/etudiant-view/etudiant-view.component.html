@@ -1,0 +1,168 @@
+<div class="max-height">
+  <p-card header="CONSULTER ÉTUDIANT">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="numero"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.numero"
+              /><label for="numero">Numero</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="nom"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.nom"
+              /><label for="nom">Nom</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="prenom"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.prenom"
+              /><label for="prenom">Prénom</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div class="d-flex justify-content-between align-items-end mt-4">
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="dateNaissance"
+                pInputText
+                readonly="readonly"
+                [ngModel]="getDate(selectedEtudiant.dateNaissance)"
+              /><label for="dateNaissance">Date de naissance</label>
+            </span>
+          </p-inputGroup>
+          <div class="d-flex flex-column distance">
+            <span class="mb-1">Sexe</span>
+            <p-inputGroup>
+              <button pButton icon="pi pi-exclamation-circle"></button>
+              <p-selectButton
+                [options]="sexes"
+                optionLabel="sexe"
+                optionValue="sexe"
+                [allowEmpty]="false"
+                [disabled]="true"
+                [(ngModel)]="selectedEtudiant.sexe"
+              ></p-selectButton>
+            </p-inputGroup>
+          </div>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="qualite"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.qualite"
+              /><label for="qualite">Qualité</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="telephone"
+                pInputText
+                type="number"
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.telephone"
+              />
+              <label for="telephone">Téléphone</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="adresse"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.adresse"
+              /><label for="adresse">Adresse</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="ville"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.ville"
+              /><label for="ville">Ville</label>
+            </span>
+          </p-inputGroup>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center custom-margin-top"
+        >
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label">
+              <input
+                id="codePostale"
+                pInputText
+                type="number"
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.codePostale"
+              />
+              <label for="codePostale">Code postal</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <span class="p-float-label"
+              ><input
+                id="mention"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.mention"
+              /><label for="mention">Mention</label>
+            </span>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button pButton icon="pi pi-exclamation-circle"></button>
+            <span class="p-float-label"
+              ><input
+                id="promotion"
+                pInputText
+                readonly="readonly"
+                [(ngModel)]="selectedEtudiant.promotion.annee"
+              /><label for="promotion">Promotion</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Retour"
+          icon="pi pi-arrow-left"
+          styleClass=" me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

@@ -1,0 +1,245 @@
+<div class="max-height">
+  <p-card header="METTRE À JOUR COMPÉTENCE À ACQUÉRIR">
+    <ng-template pTemplate="content">
+      <div class="d-flex flex-column form-container">
+        <div class="d-flex justify-content-between align-items-center">
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTypeStage ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="competence"
+                inputId="competence"
+                [options]="competences"
+                optionLabel="code"
+                [filter]="true"
+                filterBy="code"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateCompetence ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetenceRequise.competence"
+              >
+              </p-dropdown>
+              <label for="competence">Compétence enseignée</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showCompetenceDialog()"
+            ></button>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateTypeStage ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-dropdown
+                id="typeStage"
+                inputId="typeStage"
+                [options]="typesStage"
+                optionLabel="type"
+                [filter]="true"
+                filterBy="type"
+                emptyFilterMessage="Aucun résultat trouvé"
+                [ngClass]="validateTypeStage ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetenceRequise.typeStage"
+              >
+              </p-dropdown>
+              <label for="typeStage">Type de stage</label>
+            </span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-success"
+              (click)="showTypeStageDialog()"
+            ></button>
+          </p-inputGroup>
+          <p-inputGroup class="distance">
+            <button
+              pButton
+              icon="pi pi-exclamation-circle"
+              [ngClass]="validateNiveau ? '' : 'p-button-danger'"
+            ></button>
+            <span class="p-float-label">
+              <p-inputNumber
+                inputId="niveau"
+                [useGrouping]="false"
+                [min]="1"
+                [max]="3"
+                [ngClass]="validateNiveau ? '' : 'ng-dirty ng-invalid'"
+                [(ngModel)]="selectedCompetenceRequise.niveau"
+              >
+              </p-inputNumber>
+              <label for="niveau">Niveau exigé</label>
+            </span>
+          </p-inputGroup>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end align-items-center">
+        <p-button
+          label="Annuler"
+          icon="pi pi-times"
+          styleClass="p-button-danger me-2"
+          (onClick)="returnToList()"
+        ></p-button>
+        <p-button
+          label="Enregistrer"
+          icon="pi pi-check"
+          styleClass="p-button-success"
+          (onClick)="update()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+
+<p-dialog
+  [visible]="competenceDialog"
+  styleClass="p-fluid"
+  header="Ajouter compétence enseignée"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateCompetenceCode ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label"
+          ><input
+            id="competenceCode"
+            pInputText
+            [ngClass]="validateCompetenceCode ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedCompetence.code"
+          /><label for="competenceCode">Code</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateCompetenceLibelle ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label"
+          ><input
+            id="competenceLibelle"
+            pInputText
+            [ngClass]="validateCompetenceLibelle ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedCompetence.libelle"
+          /><label for="competenceLibelle">Libelle</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateCompetenceDescription ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <textarea
+            id="competenceDescription"
+            rows="3"
+            cols="30"
+            pInputTextarea
+            [ngClass]="
+              validateCompetenceDescription ? '' : 'ng-dirty ng-invalid'
+            "
+            [(ngModel)]="selectedCompetence.description"
+          ></textarea
+          ><label for="competenceDescription">Description</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showCompetenceDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveCompetence()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog
+  [visible]="typeStageDialog"
+  styleClass="p-fluid"
+  header="Ajouter type de stage"
+  [draggable]="false"
+  [modal]="true"
+  [closable]="false"
+>
+  <ng-template pTemplate="content">
+    <div class="d-flex flex-column align-items-center pt-4">
+      <p-inputGroup>
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageType ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label"
+          ><input
+            id="typeStageType"
+            pInputText
+            [ngClass]="validateTypeStageType ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.type"
+          /><label for="typeStageType">Type</label>
+        </span>
+      </p-inputGroup>
+      <p-inputGroup class="mt-4">
+        <button
+          pButton
+          icon="pi pi-exclamation-circle"
+          [ngClass]="validateTypeStageNbSemaines ? '' : 'p-button-danger'"
+        ></button>
+        <span class="p-float-label">
+          <p-inputNumber
+            inputId="typeStageNbSemaines"
+            [useGrouping]="false"
+            [min]="1"
+            [max]="25"
+            [ngClass]="validateTypeStageNbSemaines ? '' : 'ng-dirty ng-invalid'"
+            [(ngModel)]="selectedTypeStage.nbSemaines"
+          >
+          </p-inputNumber>
+          <label for="typeStageNbSemaines">Nombre de semaines</label>
+        </span>
+      </p-inputGroup>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Annuler"
+      icon="pi pi-times"
+      styleClass="p-button-danger me-2"
+      (onClick)="showTypeStageDialog()"
+    ></p-button>
+    <p-button
+      label="Enregistrer"
+      icon="pi pi-check"
+      styleClass="p-button-success"
+      (onClick)="saveTypeStage()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
